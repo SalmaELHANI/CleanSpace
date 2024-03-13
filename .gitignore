@@ -1,3 +1,4 @@
 .envgit add .gitignore
 tailwind.config.js
 node_modules
+.envv
