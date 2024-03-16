@@ -1,15 +1,15 @@
 import React from 'react';
-import img1 from "../images/icons_image/1.png";
-import img2 from "../images/icons_image/2.png";
-import img3 from "../images/icons_image/3.png";
-import img4 from "../images/icons_image/4.png";
-import img5 from "../images/icons_image/5.png";
-import img6 from "../images/icons_image/6.png";
+import img1 from "../images/Services_image/1.png";
+import img2 from "../images/Services_image/2.png";
+import img3 from "../images/Services_image/3.png";
+import img4 from "../images/Services_image/4.png";
+import img5 from "../images/Services_image/5.png";
+import img6 from "../images/Services_image/6.png";
 
 function Service() {
   return (
     <div className="py-16 bg-blue-200">
-      <div className="container m-auto px-6 text-gray-500 md:px-12 xl:px-0">
+      <div className="container m-auto text-gray-500 md:px-12 xl:px-0">
         <div className=" flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
@@ -25,9 +25,9 @@ function Service() {
             </div>
           </div>
         </div>
-        <div className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
+        <div className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3 sm:w-3/4">
           {serviceItems.map((service, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-xl px-8 py-12 mx-4 sm:px-12 lg:px-8" data-aos="zoom-in">
+            <div key={index} className="bg-white rounded-2xl shadow-xl px-8 pt-12 mx-4 sm:px-12 lg:px-8" data-aos="zoom-in">
               <div className="mb-12 space-y-3">
                 <h3 className="text-2xl font-semibold text-yellow-400">{service.title}</h3>
                 <p className="mb-6">{service.description}</p>
@@ -35,8 +35,7 @@ function Service() {
               <img
                 src={service.imageSrc}
                 alt={`illustration-${index}`}
-                className="w-2/3 ml-auto -mb-12"
-                loading="lazy"
+                className="w-2/3 ml-auto"
                 width="1000"
                 height="700"
               />
@@ -48,7 +47,6 @@ function Service() {
   );
 }
 
-// Définissez vos services avec des titres, descriptions et sources d'images
 const serviceItems = [
   {
     title: 'Ménage Simple',

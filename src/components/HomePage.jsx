@@ -1,19 +1,18 @@
 // components/HomePage.jsx
-import {React } from 'react';
+import React from 'react';
 import Hero from './Hero';
 import About from './About';
 import Service from './Service';
-
+import Reservation from './Reservation';
 
 function HomePage() {
 
   return (
     <>
-     
-      <Hero />
+      <Hero/>
       <About/>
       <Service/>
-      
+      <Reservation/>
     </>
   );
 }

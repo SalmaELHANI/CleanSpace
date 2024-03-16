@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Reserve from './components/Reserve';
+import Reserve from './components/Reservation';
 import Hero from './components/Hero';
 
 function App() {
