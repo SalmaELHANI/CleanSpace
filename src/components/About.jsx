@@ -21,15 +21,14 @@ function About() {
                             CleanSpace : Experts en Nettoyage et Hygiène
                         </h2>
                         <p className="mt-6 text-gray-600">
-                            Chez CleanSpace, nous sommes animés par la passion de maintenir des espaces propres et sains. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
-                            omnis voluptatem accusantium nemo perspiciatis delectus atque
-                            autem! Voluptatum tenetur beatae unde aperiam, repellat expedita
-                            consequatur! Officiis id consequatur atque doloremque!
+                            Chez CleanSpace, notre passion est de maintenir des espaces propres et sains.
+                            Nous croyons fermement que la propreté est essentielle au bien-être.
+                            C'est pourquoi nous offrons des services de nettoyage de qualité supérieure, respectueux de l'environnement. Pour nous, la propreté n'est pas seulement une tâche,
+                            c'est une mission que nous accomplissons avec dévouement.
                         </p>
                         <p className="mt-4 text-gray-600">
-                            Nobis minus voluptatibus pariatur dignissimos libero quaerat iure
-                            expedita at? Asperiores nemo possimus nesciunt dicta veniam
-                            aspernatur quam mollitia.
+                        Afin de répondre à vos besoins, nous nous engageons à fournir des services de nettoyage professionnel de haute qualité. 
+                        Notre équipe intervient rapidement et efficacement pour garantir un environnement impeccable.
                         </p>
                         <ul className="mt-4 text-black">
                             <li>
