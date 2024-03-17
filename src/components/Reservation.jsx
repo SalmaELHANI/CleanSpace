@@ -11,11 +11,11 @@ function Reservation() {
     return (
         <>
             <section>
-                <div className="container p-4 mx-auto bg-white max-w-7xl sm:p-6 lg:p-8 dark:bg-gray-800">
+                <div className="container p-4 mx-auto bg-white max-w-7xl sm:p-6 lg:p-8">
                     <div className="flex flex-wrap -mx-8">
                         <div className="w-full px-8 lg:w-1/3" data-aos="fade-right">
                             <ul className="space-y-10 pt-20 lg:pt-24">
-                                <h4 className="text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:leading-9">
+                                <h4 className="text-3xl font-extrabold leading-8 tracking-tight text-gray-900  sm:leading-9">
                                     Étapes de réservation:
                                 </h4>
                                 <li className={`flex -mx-4 ${currentStep === 1 ? 'bg-blue-50 p-2 rounded-xl' : ''}`}>
@@ -25,10 +25,10 @@ function Reservation() {
                                         </span>
                                     </div>
                                     <div className="px-4">
-                                        <h3 className="cursor-pointer my-2 text-xl font-semibold dark:text-white" onClick={() => handleStepChange(1)}>
+                                        <h3 className="cursor-pointer my-2 text-xl font-semibold" onClick={() => handleStepChange(1)}>
                                             Coordonnées
                                         </h3>
-                                        <p className="text-gray-500 dark:text-gray-300">
+                                        <p className="text-gray-500 ">
                                             Entrez vos coordonnées personnelles.
                                         </p>
                                     </div>
@@ -40,10 +40,10 @@ function Reservation() {
                                         </span>
                                     </div>
                                     <div className="px-4">
-                                        <h3 className="cursor-pointer my-2 text-xl font-semibold dark:text-white" onClick={() => handleStepChange(2)}>
+                                        <h3 className="cursor-pointer my-2 text-xl font-semibold " onClick={() => handleStepChange(2)}>
                                             Services
                                         </h3>
-                                        <p className="text-gray-500 dark:text-gray-300">
+                                        <p className="text-gray-500 ">
                                             Choisissez les services que vous souhaitez réserver.
                                         </p>
                                     </div>
@@ -55,10 +55,10 @@ function Reservation() {
                                         </span>
                                     </div>
                                     <div className="px-4">
-                                        <h3 className="cursor-pointer my-2 text-xl font-semibold dark:text-white" onClick={() => handleStepChange(3)}>
+                                        <h3 className="cursor-pointer my-2 text-xl font-semibold " onClick={() => handleStepChange(3)}>
                                             Terminer
                                         </h3>
-                                        <p className="text-gray-500 dark:text-gray-300">
+                                        <p className="text-gray-500 ">
                                             Finalisez votre réservation.
                                         </p>
                                     </div>

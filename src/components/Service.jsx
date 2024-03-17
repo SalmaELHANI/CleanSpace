@@ -16,10 +16,10 @@ function Service() {
               <span className="mb-2 block text-lg font-semibold text-blue-700">
                 Nos Solutions pour un Environnement Propre
               </span>
-              <h2 className="mb-3 text-3xl font-bold leading-[1.2] text-black dark:text-white sm:text-4xl md:text-[40px]">
+              <h2 className="mb-3 text-3xl font-bold leading-[1.2] text-black sm:text-4xl md:text-[40px]">
                 Services de Nettoyage Professionnels
               </h2>
-              <p className="text-base text-body-color dark:text-dark-6">
+              <p className="text-base text-body-color ">
                 Explorez nos services de nettoyage innovants conçus pour maintenir votre espace propre et sain.
               </p>
             </div>

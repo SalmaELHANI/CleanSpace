@@ -25,7 +25,8 @@ function Hero() {
       nextStep();
     }, 10000);
     return () => clearTimeout(timer);
-  }, [currentStep]);
+  }, []);
+
 
   return (
     <>
@@ -33,7 +34,7 @@ function Hero() {
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900&display=swap"
         rel="stylesheet"
       />
-      <main className="bg-white font-open-sans">
+      <main className="bg-white font-open-sans lg:mt-16 mt-28">
         <div className="container mx-auto px-8 py-8 lg:py-14 relative flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 flex flex-col items-center lg:items-start" data-aos="fade-down">
             <div>
