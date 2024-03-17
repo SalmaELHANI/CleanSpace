@@ -72,7 +72,7 @@ function Navbar() {
                 </div>
 
                 {menuOpen && (
-                    <div className="absolute top-full left-0 w-full md:hidden bg-white" id="navbar-default">
+                    <div className="absolute top-full left-0 w-full lg:hidden bg-white" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50">
                             {links.map(({ label, target }, index) => (
                                 <li key={index}>
