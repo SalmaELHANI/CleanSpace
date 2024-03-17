@@ -11,7 +11,7 @@ function Reservation() {
     return (
         <>
             <section>
-                <div className="container p-4 mx-auto bg-white max-w-7xl sm:p-6 lg:p-8">
+                <div className="container p-4 mx-auto bg-white max-w-7xl sm:p-6 lg:p-8 lg:mt-16 mt-28">
                     <div className="flex flex-wrap -mx-8">
                         <div className="w-full px-8 lg:w-1/3" data-aos="fade-right">
                             <ul className="space-y-10 pt-20 lg:pt-24">
