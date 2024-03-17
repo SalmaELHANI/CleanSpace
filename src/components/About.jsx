@@ -3,7 +3,7 @@ import check from "../images/check.jpg"
 import cleanerHome from '../images/cleaner-home.jpg'
 function About() {
     return (
-        <div className="py-16 bg-white">
+        <div className="py-16 bg-white lg:mt-16 mt-28">
             <div className="container mx-auto px-6 text-gray-600 md:px-12 xl:px-6">
                 <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
                     <div className="md:w-5/12 lg:w-5/12" data-aos="fade-right">

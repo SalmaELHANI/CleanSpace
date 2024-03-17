@@ -42,7 +42,7 @@ const otherLinks = [
 ];
 function Footer() {
     return (
-        <footer className="bg-white" id="contact">
+        <footer className="bg-white " id="contact">
             <div className="container px-6 py-12 mx-auto">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-y-10 lg:grid-cols-5">
                     <div className="sm:col-span-3 lg:col-span-2">

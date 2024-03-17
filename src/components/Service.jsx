@@ -8,7 +8,7 @@ import img6 from "../images/Services_image/6.png";
 
 function Service() {
   return (
-    <div className="py-16 bg-blue-200">
+    <div className="py-16 bg-blue-200 lg:mt-16 mt-28">
       <div className="container m-auto text-gray-500 md:px-12 xl:px-0">
         <div className=" flex flex-wrap">
           <div className="w-full px-4">
