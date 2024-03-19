@@ -51,7 +51,7 @@ function Navbar() {
                                 {label}
                             </Link>
                         ))}
-                        <a href="/contact" className="py-2 px-6 mr-4  hover:bg-blue-500 hover:text-white hover:rounded-2xl duration-300">
+                        <a href="/#contact" className="py-2 px-6 mr-4  hover:bg-blue-500 hover:text-white hover:rounded-2xl duration-300">
                             Contact
                         </a>
                         <Link to="reserve" className="py-2 px-6 mr-8 rounded-2xl  bg-yellow-400 hover:bg-yellow-300 duration-300">

@@ -71,41 +71,20 @@ function Reservation() {
                                 <div className="mx-auto w-full max-w-[550px] border border-gray-500 m-4 p-7 rounded-lg shadow-lg shadow-gray-400">
                                     {currentStep === 1 && (
                                         <form>
-                                            <div className="-mx-3 flex flex-wrap">
-                                                <div className="w-full px-3 sm:w-1/2">
-                                                    <div className="mb-5">
-                                                        <label
-                                                            htmlFor="fName"
-                                                            className="mb-3 block text-base font-medium text-[#07074D]"
-                                                        >
-                                                            Prénom:
-                                                        </label>
-                                                        <input
-                                                            type="text"
-                                                            name="fName"
-                                                            id="fName"
-                                                            placeholder="Votre prénom:"
-                                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="w-full px-3 sm:w-1/2">
-                                                    <div className="mb-5">
-                                                        <label
-                                                            htmlFor="lName"
-                                                            className="mb-3 block text-base font-medium text-[#07074D]"
-                                                        >
-                                                            Nom de famille:
-                                                        </label>
-                                                        <input
-                                                            type="text"
-                                                            name="lName"
-                                                            id="lName"
-                                                            placeholder="Votre nom:"
-                                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                                        />
-                                                    </div>
-                                                </div>
+                                            <div className="mb-5">
+                                                <label
+                                                    htmlFor="fName"
+                                                    className="mb-3 block text-base font-medium text-[#07074D]"
+                                                >
+                                                    Nom et Prénom:
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="Name"
+                                                    id="Name"
+                                                    placeholder="Votre nom et prénom:"
+                                                    className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                                />
                                             </div>
                                             <div className="mb-5">
                                                 <label
@@ -268,36 +247,36 @@ function Reservation() {
                                     {currentStep === 3 && (
                                         <div className='flex items-center justify-center min-h-screen  '>
                                             <div className='w-full max-w-lg px-10 py-8 mx-auto bg-gray-100 rounded-lg shadow-xl'>
-                                            <div className="text-2xl text-blue-500 mb-8">
-                                                        Clean<strong className="font-bold text-yellow-400">Space</strong>
-                                                    </div>
-                                                    <p className='font-medium text-2xl text-center mb-10'>Félicitations <span></span> : <span className=' text-blue-500'> <span className='uppercase text-blue-500' >nom </span>prénom</span> </p>
+                                                <div className="text-2xl text-blue-500 mb-8">
+                                                    Clean<strong className="font-bold text-yellow-400">Space</strong>
+                                                </div>
+                                                <p className='font-medium text-2xl text-center mb-10'>Félicitations <span></span> : <span className=' text-blue-500'> <span className='uppercase text-blue-500' >nom </span>prénom</span> </p>
                                                 <div className='max-w-md mx-auto space-y-6'>
                                                     <div className='text-base leading-7'>
                                                         <p className='font-medium text-black'>Phone Number:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components 
+                                                            Check out our awesome components
                                                         </p>
                                                     </div>
 
                                                     <div className='text-base leading-7 mt-6'>
                                                         <p className='font-medium text-black'>Date et Local Time:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components 
+                                                            Check out our awesome components
                                                         </p>
                                                     </div>
-                                                  <div className='text-base leading-7'>
+                                                    <div className='text-base leading-7'>
                                                         <p className='font-medium text-black'>Emplacement:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components 
+                                                            Check out our awesome components
                                                         </p>
                                                     </div>
                                                     <div className='text-base leading-7'>
                                                         <p className='font-medium text-black'>Service:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components 
+                                                            Check out our awesome components
                                                         </p>
-                                                    </div>         
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
