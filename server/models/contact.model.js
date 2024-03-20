@@ -1,6 +1,6 @@
-import db from "./index.js";
+import mongoose from "mongoose";
 
-const contactSchema = new db.mongoose.Schema({
+const contactSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
@@ -11,5 +11,5 @@ const contactSchema = new db.mongoose.Schema({
     }
 });
 
-const Contact = db.mongoose.model('Contact', contactSchema);
+const Contact = mongoose.model('Contact', contactSchema);
 export default Contact;

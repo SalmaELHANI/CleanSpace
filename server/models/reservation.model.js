@@ -1,6 +1,6 @@
-import db from "./index.js";
+import mongoose from "mongoose";
 
-const reservationSchema = new db.mongoose.Schema({
+const reservationSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -35,5 +35,5 @@ const reservationSchema = new db.mongoose.Schema({
     }
 });
 
-const Reservation = model('Reservation', reservationSchema);
-export default Reservation;
+const ReservationModel = mongoose.model('Reservation', reservationSchema);
+export default ReservationModel;
