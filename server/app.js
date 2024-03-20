@@ -1,9 +1,11 @@
 import express from "express";
 const app = express();
 import db from "./models/index.js";
+import ReservationRoutes from "./routes/reservation.route.js";
 
 app.use(express.json());
 app.use(db.cors());
+app.use('/api', ReservationRoutes);
 
 const startserver = async () =>{
     try{ 
