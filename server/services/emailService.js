@@ -21,9 +21,9 @@ const sendEmail = async (recipient, subject, htmlContent,attachmentPath) => {
                 contentType: 'application/pdf'
             }]
         });
-        console.log('E-mail envoyé avec succès !');
+        console.log('Email sent successfully!');
     } catch (error) {
-        console.error('Erreur lors de l\'envoi de l\'e-mail :', error);
+        console.error('Error sending email:', error);
     }
 };
 
