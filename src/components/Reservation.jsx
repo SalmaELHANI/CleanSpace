@@ -1,13 +1,66 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addReservation } from '../store/reservation/ReservationThunks.js';
+
 function Reservation() {
     const [currentStep, setCurrentStep] = useState(1);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        city: "Agadir",
+        service: "Ménage Simple",
+        residenceType: "Villa",
+        date: "",
+        time: "",
+        message: ""
+    });
+
+    const dispatch = useDispatch();
 
     const nextStep = () => {
+        console.log(formData);
+        if (currentStep === 1) {
+            if (formData.name === "" || formData.email === "" || formData.phone === "" || formData.city === "") {
+                alert("Veuillez remplir tous les champs obligatoires.");
+                return;
+            }
+        } else if (currentStep === 2) {
+            if (formData.service === "" || formData.residenceType === "" || formData.date === "" || formData.time === "") {
+                alert("Veuillez remplir tous les champs obligatoires.");
+                return;
+            }
+        }
         setCurrentStep(currentStep + 1);
     };
-    const handleStepChange = (step) => {
-        setCurrentStep(step);
+
+    const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     };
+
+    const handleStepChange = (step) => {
+        if (currentStep !== 3) {
+            setCurrentStep(step);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("formData create :", formData);
+        try {
+            if (!formData.message) {
+                delete formData.message;
+            }
+            await dispatch(addReservation(formData));
+        } catch (error) {
+            console.error("Erreur lors de la soumission du formulaire :", error);
+        }
+    };
+
     return (
         <>
             <section>
@@ -55,7 +108,7 @@ function Reservation() {
                                         </span>
                                     </div>
                                     <div className="px-4">
-                                        <h3 className="cursor-pointer my-2 text-xl font-semibold " onClick={() => handleStepChange(3)}>
+                                        <h3 className="cursor-pointer my-2 text-xl font-semibold ">
                                             Terminer
                                         </h3>
                                         <p className="text-gray-500 ">
@@ -76,14 +129,17 @@ function Reservation() {
                                                     htmlFor="fName"
                                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                                 >
-                                                    Nom et Prénom:
+                                                    Nom et Prénom:<span className="text-red-500">*</span>
                                                 </label>
                                                 <input
                                                     type="text"
                                                     name="Name"
                                                     id="Name"
+                                                    value={formData.name}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                     placeholder="Votre nom et prénom:"
                                                     className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
                                                 />
                                             </div>
                                             <div className="mb-5">
@@ -91,14 +147,17 @@ function Reservation() {
                                                     htmlFor="email"
                                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                                 >
-                                                    Email:
+                                                    Email:<span className="text-red-500">*</span>
                                                 </label>
                                                 <input
                                                     type="email"
                                                     name="email"
                                                     id="email"
+                                                    value={formData.email}
+                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                     placeholder="@gmail.com"
                                                     className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
                                                 />
                                             </div>
                                             <div className="mb-5">
@@ -106,14 +165,17 @@ function Reservation() {
                                                     htmlFor="phone"
                                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                                 >
-                                                    Téléphone:
+                                                    Téléphone:<span className="text-red-500">*</span>
                                                 </label>
                                                 <input
                                                     type="text"
                                                     name="phone"
                                                     id="phone"
+                                                    value={formData.phone}
+                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                                     placeholder="06 23 55 85 53"
                                                     className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
                                                 />
                                             </div>
                                             <div className="mb-5">
@@ -121,12 +183,15 @@ function Reservation() {
                                                     htmlFor="city"
                                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                                 >
-                                                    Ville:
+                                                    Ville:<span className="text-red-500">*</span>
                                                 </label>
                                                 <select
                                                     className="block w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                                     id="city"
                                                     name="city"
+                                                    value={formData.city}
+                                                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+
                                                 >
                                                     <option>Agadir</option>
                                                     <option>Casablanca</option>
@@ -151,11 +216,14 @@ function Reservation() {
                                                     htmlFor="guest"
                                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                                 >
-                                                    Service:
+                                                    Service:<span className="text-red-500">*</span>
                                                 </label>
                                                 <select
                                                     className="block w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                                    id="city"
+                                                    id="service"
+                                                    value={formData.service}
+                                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+
                                                 >
                                                     <option>Ménage Simple</option>
                                                     <option>Ménage quotudien</option>
@@ -172,11 +240,14 @@ function Reservation() {
                                                     htmlFor="guest"
                                                     className="mb-3 block text-base font-medium text-[#07074D]"
                                                 >
-                                                    Type d'habitation:
+                                                    Type d'habitation:<span className="text-red-500">*</span>
                                                 </label>
                                                 <select
                                                     className="block w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                                    id="city"
+                                                    id="residenceType"
+                                                    value={formData.residenceType}
+                                                    onChange={(e) => setFormData({ ...formData, residenceType: e.target.value })}
+
                                                 >
                                                     <option>Villa</option>
                                                     <option>Appartement</option>
@@ -192,13 +263,17 @@ function Reservation() {
                                                             htmlFor="date"
                                                             className="mb-3 block text-base font-medium text-[#07074D]"
                                                         >
-                                                            Date
+                                                            Date:<span className="text-red-500">*</span>
                                                         </label>
                                                         <input
                                                             type="date"
                                                             name="date"
                                                             id="date"
+                                                            min={getCurrentDate()}
+                                                            value={formData.date}
+                                                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
                                                         />
                                                     </div>
                                                 </div>
@@ -208,13 +283,18 @@ function Reservation() {
                                                             htmlFor="time"
                                                             className="mb-3 block text-base font-medium text-[#07074D]"
                                                         >
-                                                            Temp
+                                                            Temp:<span className="text-red-500">*</span>
                                                         </label>
                                                         <input
                                                             type="time"
                                                             name="time"
                                                             id="time"
+                                                            value={formData.time}
+                                                            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                                                            min="08:00"
+                                                            max="23:00"
                                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
                                                         />
                                                     </div>
                                                 </div>
@@ -230,6 +310,8 @@ function Reservation() {
                                                     rows="4"
                                                     name="message"
                                                     id="message"
+                                                    value={formData.message}
+                                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                                     placeholder="Tapez votre message"
                                                     className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                                 ></textarea>
@@ -237,7 +319,10 @@ function Reservation() {
                                             <div>
                                                 <button
                                                     className="bg-blue-500 hover:bg-blue-400 mt-2 py-3 px-8 text-sm rounded-full font-bold uppercase text-white tracking-widest"
-                                                    onClick={nextStep}
+                                                    onClick={(e) => {
+                                                        handleSubmit(e);
+                                                        nextStep();
+                                                    }}
                                                 >
                                                     Terminer
                                                 </button>
@@ -250,31 +335,34 @@ function Reservation() {
                                                 <div className="text-2xl text-blue-500 mb-8">
                                                     Clean<strong className="font-bold text-yellow-400">Space</strong>
                                                 </div>
-                                                <p className='font-medium text-2xl text-center mb-10'>Félicitations <span></span> : <span className=' text-blue-500'> <span className='uppercase text-blue-500' >nom </span>prénom</span> </p>
+                                                <p className='font-medium text-2xl text-center mb-10'>Félicitations: <span className=' text-blue-500'> {formData.name} </span></p>
+                                                <p className='font-medium text-black mb-6'>
+                                                    Nous avons bien reçu votre demande de réservation. Le PDF avec les détails a été envoyé à votre adresse e-mail.
+                                                </p>
                                                 <div className='max-w-md mx-auto space-y-6'>
                                                     <div className='text-base leading-7'>
                                                         <p className='font-medium text-black'>Phone Number:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components
+                                                            {formData.phone}
                                                         </p>
                                                     </div>
 
                                                     <div className='text-base leading-7 mt-6'>
                                                         <p className='font-medium text-black'>Date et Local Time:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components
+                                                            {formData.date} {formData.time}
                                                         </p>
                                                     </div>
                                                     <div className='text-base leading-7'>
                                                         <p className='font-medium text-black'>Emplacement:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components
+                                                            {formData.city}
                                                         </p>
                                                     </div>
                                                     <div className='text-base leading-7'>
                                                         <p className='font-medium text-black'>Service:</p>
                                                         <p className='text-gray-600'>
-                                                            Check out our awesome components
+                                                            {formData.service}
                                                         </p>
                                                     </div>
                                                 </div>

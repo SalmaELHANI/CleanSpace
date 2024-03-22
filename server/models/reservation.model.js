@@ -32,6 +32,9 @@ const reservationSchema = new mongoose.Schema({
     time: {
         type: String,
         required: true
+    },
+    message: {
+        type: String,
     }
 });
 

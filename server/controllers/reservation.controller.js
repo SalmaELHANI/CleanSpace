@@ -12,7 +12,8 @@ const querySchema = Joi.object({
     service: Joi.string().required(),
     residenceType: Joi.string().required(),
     date: Joi.date().required(),
-    time: Joi.string().required()
+    time: Joi.string().required(),
+    message:Joi.string()
 });
 
 export const createReservation = async (req, res) => {
