@@ -17,7 +17,6 @@ export const addReservation = createAsyncThunk(
   'reservations/addReservation',
   async (reservationData) => {
     try {
-        console.log("reservationData:"+reservationData);
       const response = await axios.post('http://localhost:3000/api/reservations', reservationData);
       return response.data;
     } catch (error) {

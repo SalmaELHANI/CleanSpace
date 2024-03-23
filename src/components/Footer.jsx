@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo.png'; 
 
 function FooterLink({ to, children }) {
     return (
@@ -108,9 +109,7 @@ function Footer() {
                 </div>
                 <hr className="my-6 border-gray-200 md:my-8" />
                 <div className="flex items-center justify-between">
-                    <div className="text-2xl text-blue-700 mr-6 w-auto h-7">
-                        Clean<strong className="font-bold text-yellow-400">Space</strong>
-                    </div>
+                    <img src={logo} alt="Logo" className="h-16 w-auto" />
                     <div className="flex -mx-2 mr-32">
                         {socialLinks.map((link, index) => (
                             <a key={index} href={link.url} className={link.className} aria-label={link.label}>

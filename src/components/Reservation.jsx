@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addReservation } from '../store/reservation/ReservationThunks.js';
+import logo from '../images/logo.png';
 
 function Reservation() {
     const [currentStep, setCurrentStep] = useState(1);
@@ -15,31 +16,54 @@ function Reservation() {
         time: "",
         message: ""
     });
-
+    const [err, setErr] = useState({
+        errEmail: "",
+        errPhone: ""
+    });
     const dispatch = useDispatch();
+    const data = useSelector(state => state.reservation);
+    const error = data.error;
 
     const nextStep = () => {
         console.log(formData);
+        setErr({
+            errEmail: "",
+            errPhone: ""
+        });
+        console.log(err);
         if (currentStep === 1) {
             if (formData.name === "" || formData.email === "" || formData.phone === "" || formData.city === "") {
                 alert("Veuillez remplir tous les champs obligatoires.");
                 return;
+            }if (!isEmailValid(formData.email) || !isPhoneNumberValid(formData.phone)) {
+                let emailError = "";
+                let phoneError = "";
+                if (!isEmailValid(formData.email)) {
+                    emailError = "Veuillez saisir une adresse e-mail valide.";
+                }
+                if (!isPhoneNumberValid(formData.phone)) {
+                    phoneError = "Veuillez saisir un numéro de téléphone valide (10 chiffres).";
+                }
+                setErr({ errEmail: emailError, errPhone: phoneError });
+                return;
             }
+            setErr({ errEmail: "", errPhone: "" });
+            
         } else if (currentStep === 2) {
             if (formData.service === "" || formData.residenceType === "" || formData.date === "" || formData.time === "") {
                 alert("Veuillez remplir tous les champs obligatoires.");
                 return;
+            } else if (error !== null) {
+                console.log(error);
+                alert("Veuillez remplir tous les champs obligatoires correctement. Sinon, veuillez réessayer plus tard ou nous contacter.");
+                return;
             }
         }
+        setErr({
+            errEmail: "",
+            errPhone: ""
+        });
         setCurrentStep(currentStep + 1);
-    };
-
-    const getCurrentDate = () => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
     };
 
     const handleStepChange = (step) => {
@@ -47,18 +71,33 @@ function Reservation() {
             setCurrentStep(step);
         }
     };
-
+    const isEmailValid = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+    const isPhoneNumberValid = (phoneNumber) => {
+        const phoneRegex = /^\d{10}$/;
+        return phoneRegex.test(phoneNumber);
+    };
+    const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+    const availableTimes = [];
+    for (let i = 8; i <= 23; i++) {
+        const hour = String(i).padStart(2, '0');
+        availableTimes.push(`${hour}:00`);
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("formData create :", formData);
-        try {
-            if (!formData.message) {
-                delete formData.message;
-            }
-            await dispatch(addReservation(formData));
-        } catch (error) {
-            console.error("Erreur lors de la soumission du formulaire :", error);
+        if (!formData.message) {
+            delete formData.message;
         }
+        await dispatch(addReservation(formData));
     };
 
     return (
@@ -155,11 +194,15 @@ function Reservation() {
                                                     id="email"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    placeholder="@gmail.com"
+                                                    placeholder="cleanspace137@gmail.com"
                                                     className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 
                                                 />
+                                                <div className="mb-2">
+                                                    <p className="text-red-500">{err.errEmail}</p>
+                                                </div>
                                             </div>
+
                                             <div className="mb-5">
                                                 <label
                                                     htmlFor="phone"
@@ -173,10 +216,13 @@ function Reservation() {
                                                     id="phone"
                                                     value={formData.phone}
                                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                                    placeholder="06 23 55 85 53"
+                                                    placeholder="0659063386"
                                                     className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 
                                                 />
+                                                <div className="mb-2">
+                                                    <p className="text-red-500">{err.errPhone}</p>
+                                                </div>
                                             </div>
                                             <div className="mb-5">
                                                 <label
@@ -226,9 +272,7 @@ function Reservation() {
 
                                                 >
                                                     <option>Ménage Simple</option>
-                                                    <option>Ménage quotudien</option>
-                                                    <option>Ménage hebdomadaire </option>
-                                                    <option>Ménage mensuel</option>
+                                                    <option>Grand Ménage</option>
                                                     <option>Grand ménage cuisine </option>
                                                     <option>Nettoyage de fin chantier </option>
                                                     <option>Nettoyage des bureaux</option>
@@ -285,17 +329,16 @@ function Reservation() {
                                                         >
                                                             Temp:<span className="text-red-500">*</span>
                                                         </label>
-                                                        <input
-                                                            type="time"
-                                                            name="time"
+                                                        <select
+                                                            className="block w-full rounded-md  border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#576ce1] focus:shadow-md "
                                                             id="time"
                                                             value={formData.time}
                                                             onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                                                            min="08:00"
-                                                            max="23:00"
-                                                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-
-                                                        />
+                                                        >
+                                                            {availableTimes.map(time => (
+                                                                <option className='' key={time} value={time}>{time}</option>
+                                                            ))}
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -330,10 +373,10 @@ function Reservation() {
                                         </form>
                                     )}
                                     {currentStep === 3 && (
-                                        <div className='flex items-center justify-center min-h-screen  '>
+                                        <div className='flex items-center justify-center'>
                                             <div className='w-full max-w-lg px-10 py-8 mx-auto bg-gray-100 rounded-lg shadow-xl'>
                                                 <div className="text-2xl text-blue-500 mb-8">
-                                                    Clean<strong className="font-bold text-yellow-400">Space</strong>
+                                                    <img src={logo} alt="Logo" className="h-16 w-auto" />
                                                 </div>
                                                 <p className='font-medium text-2xl text-center mb-10'>Félicitations: <span className=' text-blue-500'> {formData.name} </span></p>
                                                 <p className='font-medium text-black mb-6'>
