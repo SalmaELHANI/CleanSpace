@@ -9,7 +9,7 @@ const generatePDFContent = (reservation) => {
         fit: [150, 150],
         align: 'center',
         valign: 'center',
-    });
+    }).moveDown(10);
 
     pdfDoc.font('Helvetica-Bold').fontSize(18).fillColor('#004AAD').text('Confirmation de réservation', { align: 'center' }).moveDown();
 
