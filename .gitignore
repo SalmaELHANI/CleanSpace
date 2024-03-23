@@ -2,4 +2,7 @@
 tailwind.config.js
 node_modules
 .env
+<<<<<<< HEAD
 .vercel
+=======
+>>>>>>> 3071c841cc58fadb7ab8d15c7e3849a3f3ad6bcc
