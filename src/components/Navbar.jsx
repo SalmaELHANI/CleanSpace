@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import logo from '../images/logo.png'; 
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -34,11 +35,8 @@ function Navbar() {
     return (
         <header className="h-24 sm:h-20 flex items-center bg-white drop-shadow-lg fixed top-0 left-0 w-full z-50 ">
             <div className="container mx-auto pl-8 flex items-center justify-between relative z-10">
-                <Link to="/" className="uppercase text-blue-700 flex flex-col items-center">
-                    <div className="text-2xl">
-                        Clean<strong className="font-bold text-yellow-400">Space</strong>
-                    </div>
-                    <small className="tracking-widest">à votre service</small>
+            <Link to="/" className=" flex flex-col items-center">
+                    <img src={logo} alt="Logo" className="h-16 w-auto" />
                 </Link>
                 <div className="flex items-center">
                     <nav className="text-gray-900 tracking-widest text-sm font-bold lg:flex items-center hidden uppercase">
