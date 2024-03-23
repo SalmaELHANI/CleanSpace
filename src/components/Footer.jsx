@@ -102,8 +102,8 @@ function Footer() {
                             <p className="text-gray-600 transition-colors duration-300">
                                 Casablanca, Marrakech, Agadir, El jadida, Safi
                             </p>
-                            <a href="tel:0659063386" className="text-gray-600 transition-colors duration-300  hover:text-blue-700 hover:font-black" aria-label="WhatsApp">(+212)6 23 55 85 53</a>
-                            <a href="mailto:ceanspace137@gmail.com" className="text-gray-600 transition-colors duration-300 hover:text-blue-700 hover:font-black" aria-label="Email">CleanSpace@gmail.com</a>
+                            <a href="tel:0659063386" className="text-gray-600 transition-colors duration-300  hover:text-blue-700 hover:font-black" aria-label="WhatsApp">(+212)6 59 06 33 86</a>
+                            <a href="mailto:ceanspace137@gmail.com" className="text-gray-600 transition-colors duration-300 hover:text-blue-700 hover:font-black" aria-label="Email">CleanSpace137@gmail.com</a>
                         </div>
                     </div>
                 </div>
