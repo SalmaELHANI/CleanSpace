@@ -5,7 +5,14 @@ import ReservationRoutes from "./routes/reservation.route.js";
 import ContactRoutes from "./routes/contact.route.js";
 
 app.use(express.json());
-app.use(db.cors());
+app.use(db.cors(
+    {
+        origin: ["https://cleanspace.vercel.app", "http://localhost:5173"],
+        methods: ["POST", "GET"],
+        credentials: true 
+    }
+));
+
 app.use('/api', ReservationRoutes, ContactRoutes);
 
 const startserver = async () =>{
