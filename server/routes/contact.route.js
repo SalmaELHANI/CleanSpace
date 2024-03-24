@@ -3,10 +3,10 @@ import {createContact,getContacts,getContactById,updateContact,deleteContact } f
 
 const router = express.Router();
 
-router.post('/', createContact);
-router.get('/', getContacts);
-router.get('/:id', getContactById);
-router.put('/:id', updateContact);
-router.delete('/:id', deleteContact);
+router.post('/contacts', createContact);
+router.get('/contacts', getContacts);
+router.get('/contacts/:id', getContactById);
+router.put('/contacts/:id', updateContact);
+router.delete('/contacts/:id', deleteContact);
 
 export default router;
