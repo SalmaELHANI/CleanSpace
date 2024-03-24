@@ -17,7 +17,7 @@ export const addReservation = createAsyncThunk(
   'reservations/addReservation',
   async (reservationData) => {
     try {
-      const response = await axios.post('https://cleanspace.vercel.app/api/reservations', reservationData);
+      const response = await axios.post('http://localhost:3000/api/reservations', reservationData);
       return response.data;
     } catch (error) {
       console.log(error.response.data.message);
