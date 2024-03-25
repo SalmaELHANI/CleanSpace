@@ -5,7 +5,7 @@ import ReservationRoutes from "./routes/reservation.route.js";
 import ContactRoutes from "./routes/contact.route.js";
 
 app.use(express.json());
-app.use(cors());
+app.use(db.cors());
 
 app.use('/api', ReservationRoutes, ContactRoutes);
 
