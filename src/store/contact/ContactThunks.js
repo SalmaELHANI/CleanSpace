@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import dotenv from 'dotenv';
-dotenv.config();
-const apiUrl = process.env.API_URL || 'http://localhost:3000';
+const apiUrl = 'https://clean-space-aoar.vercel.app';
+console.log(apiUrl);
 
 export const createContact = createAsyncThunk(
   'contacts/createContact',

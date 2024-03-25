@@ -124,7 +124,7 @@ function Footer() {
 
                         </div>
                         {notification && (
-                            <div className="mt-4 text-2xl text-green-600">{notification}</div>
+                            <div className="mt-2 text-xl text-green-600">{notification}</div>
                         )}
                     </div>
                     <div>
