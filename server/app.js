@@ -5,7 +5,7 @@ import ReservationRoutes from "./routes/reservation.route.js";
 import ContactRoutes from "./routes/contact.route.js";
 
 app.use(express.json());
-app.use(db.cors());
+app.use(db.cors('*'));
 
 app.use('/api', ReservationRoutes, ContactRoutes);
 
@@ -16,7 +16,7 @@ const startserver = async () =>{
         });
         console.log("Connection to the database successful");
         
-        app.listen(db.PORT,()=>{
+        app.listen(db.PORT,'0.0.0.0',()=>{
             console.log("http://localhost:"+db.PORT);
         })  
     }catch(error){
