@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+const apiUrl = process.env.API_URL || 'http://localhost:3000';
 
 export const fetchReservations = createAsyncThunk(
     'reservations/fetchReservations',
     async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/reservations');
+        const response = await axios.get(`${apiUrl}/api/reservations`);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -17,7 +18,7 @@ export const addReservation = createAsyncThunk(
   'reservations/addReservation',
   async (reservationData) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/reservations', reservationData);
+      const response = await axios.post(`${apiUrl}/api/reservations`, reservationData);
       return response.data;
     } catch (error) {
       console.log(error.response.data.message);

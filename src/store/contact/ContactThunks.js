@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+const apiUrl = process.env.API_URL || 'http://localhost:3000';
 
 export const createContact = createAsyncThunk(
   'contacts/createContact',
   async (contactData) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/contacts', contactData);
+      const response = await axios.post(`${apiUrl}/api/contacts`, contactData);
       return response.data;
     } catch (error) {
       throw Error(error.response.data.message);
@@ -17,7 +18,7 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3000//api/contacts');
+      const response = await axios.get('http://localhost:3000/api/contacts');
       return response.data;
     } catch (error) {
       throw Error(error.response.data.message);
@@ -29,7 +30,7 @@ export const updateContact = createAsyncThunk(
   'contacts/updateContact',
   async ({ id, contactData }) => {
     try {
-      const response = await axios.put(`http://localhost:3000//api/contacts/${id}`, contactData);
+      const response = await axios.put(`http://localhost:3000/api/contacts/${id}`, contactData);
       return response.data;
     } catch (error) {
       throw Error(error.response.data.message);
