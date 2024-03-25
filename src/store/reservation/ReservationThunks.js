@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const apiUrl = 'https://clean-space-aoar.vercel.app';
+const apiUrl = 'https://cleanspace.onrender.com';
 console.log(apiUrl);
 export const fetchReservations = createAsyncThunk(
     'reservations/fetchReservations',

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const apiUrl = 'https://clean-space-aoar.vercel.app';
-console.log(apiUrl);
+const apiUrl = 'https://cleanspace.onrender.com';
+console.log("Test" ,apiUrl);
 
 export const createContact = createAsyncThunk(
   'contacts/createContact',
