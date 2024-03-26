@@ -28,8 +28,10 @@ export const createReservation = async (req, res) => {
         const pdfPath = 'reservation.pdf';
         pdfDoc.pipe(fs.createWriteStream(pdfPath));
         pdfDoc.end();
+        
+        const message = `Cher(e) ${reservation.name},\n\nNous avons bien reçu votre réservation chez CleanSpace ! Veuillez trouver ci-joint le PDF de confirmation de votre rendez-vous, contenant tous les détails nécessaires.\n\nCordialement,\nL'équipe CleanSpace`;
 
-        await sendEmail(reservation.email, 'Confirmation de réservation', 'Veuillez trouver ci-joint votre confirmation de réservation.', pdfPath);
+        await sendEmail(reservation.email, 'Confirmation de réservation', message, pdfPath);
 
         res.status(201).json({
             status: 'success',

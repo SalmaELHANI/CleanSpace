@@ -4,6 +4,7 @@ import db from "./models/index.js";
 import ReservationRoutes from "./routes/reservation.route.js";
 import ContactRoutes from "./routes/contact.route.js";
 
+
 app.use(express.json());
 app.use(db.cors('*'));
 
