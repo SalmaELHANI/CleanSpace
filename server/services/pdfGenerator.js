@@ -3,7 +3,7 @@ import db from '../models/index.js';
 const generatePDFContent = (reservation) => {
     const pdfDoc = new db.PDFDocument();
     const formattedDate = db.format(new Date(reservation.date), 'dd MMMM yyyy', { locale: db.fr });
-    const logo = 'C:\\Users\\ISMAIL ELHANI\\cleanSpace\\src\\images\\logo.png'; 
+    const logo = 'C:\Users\ISMAIL ELHANI\cleanSpace\public\logo.png';
 
     pdfDoc.image(logo, {
         fit: [150, 150],
