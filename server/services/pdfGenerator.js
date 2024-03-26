@@ -3,13 +3,7 @@ import db from '../models/index.js';
 const generatePDFContent = (reservation) => {
     const pdfDoc = new db.PDFDocument();
     const formattedDate = db.format(new Date(reservation.date), 'dd MMMM yyyy', { locale: db.fr });
-    const logo = 'C:\\Users\\ISMAIL ELHANI\\cleanSpace\\src\\images\\logo.png'; 
-
-    pdfDoc.image(logo, {
-        fit: [150, 150],
-        align: 'center',
-        valign: 'center',
-    }).moveDown(10);
+    
 
     pdfDoc.font('Helvetica-Bold').fontSize(18).fillColor('#004AAD').text('Confirmation de réservation', { align: 'center' }).moveDown();
 
