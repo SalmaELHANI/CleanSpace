@@ -416,7 +416,7 @@ function Reservation() {
                             </div>
                         </div>
                     </div>
-                </div>jjjjjjjj
+                </div>
             </section>
         </>
     );
