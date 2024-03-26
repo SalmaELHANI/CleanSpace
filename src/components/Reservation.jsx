@@ -13,7 +13,7 @@ function Reservation() {
         service: "Ménage Simple",
         residenceType: "Villa",
         date: "",
-        time: "",
+        time: "08:00",
         message: ""
     });
     const [err, setErr] = useState({
