@@ -13,7 +13,7 @@ function Reservation() {
         service: "Ménage Simple",
         residenceType: "Villa",
         date: "",
-        time: "",
+        time: "08:00",
         message: ""
     });
     const [err, setErr] = useState({
@@ -97,7 +97,7 @@ function Reservation() {
         if (!formData.message) {
             delete formData.message;
         }
-        await dispatch(addReservation(formData));
+         dispatch(addReservation(formData));
     };
 
     return (

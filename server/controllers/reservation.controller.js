@@ -13,7 +13,7 @@ const querySchema = Joi.object({
     residenceType: Joi.string().required(),
     date: Joi.date().required(),
     time: Joi.string().required(),
-    message:Joi.string()
+    message: Joi.string()
 });
 
 export const createReservation = async (req, res) => {
@@ -29,7 +29,12 @@ export const createReservation = async (req, res) => {
         pdfDoc.pipe(fs.createWriteStream(pdfPath));
         pdfDoc.end();
 
-        await sendEmail(reservation.email, 'Confirmation de réservation', 'Veuillez trouver ci-joint votre confirmation de réservation.', pdfPath);
+        const message = `Cher(e) ${reservation.name},<br><br>
+        Nous avons bien reçu votre réservation chez CleanSpace ! Veuillez trouver ci-joint le PDF de confirmation de votre rendez-vous, contenant tous les détails nécessaires.<br><br>
+        Cordialement,<br>
+        L'équipe CleanSpace`;
+
+        await sendEmail(reservation.email, 'Confirmation de réservation', message, pdfPath);
 
         res.status(201).json({
             status: 'success',
@@ -73,7 +78,6 @@ export const updateReservation = async (req, res) => {
     try {
         const reservation = await db.reservation.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
-            runValidators: true
         });
         if (!reservation) {
             return res.status(404).json({
