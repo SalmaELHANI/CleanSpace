@@ -3,11 +3,11 @@ import db from '../models/index.js';
 const generatePDFContent = (reservation) => {
     const pdfDoc = new db.PDFDocument();
     const formattedDate = db.format(new Date(reservation.date), 'dd MMMM yyyy', { locale: db.fr });
-    const logo = 'C:\\Users\\ISMAIL ELHANI\\cleanSpace\\src\\images\\logo.png'; 
+    const logo = './public/logo.png';
 
     pdfDoc.image(logo, {
         fit: [150, 150],
-        align: 'center',
+        align: 'center',    
         valign: 'center',
     }).moveDown(10);
 
