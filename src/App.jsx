@@ -13,6 +13,9 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Reserve from './components/Reservation';
 import Hero from './components/Hero';
+import LoginAdmin from './components/LoginAdmin.jsx';
+import Dashboard from './dashboard/Dashboard.jsx';
+import DashboardRoutes from './dashboard/DashboardRoutes.jsx';
 
 function App() {
   useEffect(() => {
@@ -26,17 +29,20 @@ function App() {
   return (
     <Providers store={store}>
       <BrowserRouter>
-        <Navbar />
+        
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/home' element={<Hero />} />
           <Route path='/service' element={<Service />} />
           <Route path='/about' element={<About/>} />
           <Route path='/reserve' element={<Reserve/>} />
+          <Route path='/pageAdmin' element={<LoginAdmin/>} />
+          <Route path='/dashboard/*' element={<DashboardRoutes/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
     </Providers>
+    
   );
 }
 

@@ -97,7 +97,7 @@ function Reservation() {
         if (!formData.message) {
             delete formData.message;
         }
-        await dispatch(addReservation(formData));
+         dispatch(addReservation(formData));
     };
 
     return (

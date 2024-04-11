@@ -40,7 +40,6 @@ const socialLinks = [
 const otherLinks = [
     { text: "FAQ", url: "#" },
     { text: "Recrutement", url: "#" },
-    { text: "Politique de confidentialité", url: "#" },
     { text: "Avis", url: "#" }
 ];
 function Footer() {
@@ -66,7 +65,7 @@ function Footer() {
         }
         setErrEmail("")
         e.preventDefault();
-        await dispatch(createContact(contact));
+        dispatch(createContact(contact));
         setContact({
             email: "",
             question: ""
@@ -143,8 +142,9 @@ function Footer() {
                             {otherLinks.map((link, index) => (
                                 <a key={index} href={link.url} className="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-700 hover:font-black">{link.text}</a>
                             ))}
+                            <Link to="/pageAdmin" className="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-700 hover:font-black">Page Admin</Link>
                         </div>
-
+ 
                     </div>
                     <div>
                         <p className="font-semibold text-gray-800">Contact</p>
