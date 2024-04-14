@@ -52,7 +52,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id) => {
     try {
-      await axios.delete(`${apiUrl}/contacts/${id}`, {
+      await axios.delete(`${apiUrl}/api/contacts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
