@@ -20,7 +20,7 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/contacts', {
+      const response = await axios.get(`${apiUrl}/api/contacts`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,7 +36,7 @@ export const updateContact = createAsyncThunk(
   'contacts/updateContact',
   async ({ id, contactData }) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/contacts/${id}`, contactData, {
+      const response = await axios.put(`${apiUrl}/api/contacts/${id}`, contactData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,7 +52,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/contacts/${id}`, {
+      await axios.delete(`${apiUrl}/contacts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

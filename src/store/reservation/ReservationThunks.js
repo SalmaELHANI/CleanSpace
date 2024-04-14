@@ -8,7 +8,7 @@ export const fetchReservations = createAsyncThunk(
     'reservations/fetchReservations',
     async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/reservations`, {
+        const response = await axios.get(`${apiUrl}/api/reservations`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,7 +37,7 @@ export const updateReservation = createAsyncThunk(
   'reservations/updateReservation',
   async ({ id, reservationData }) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/reservations/${id}`, reservationData, {
+      const response = await axios.put(`${apiUrl}/api/reservations/${id}`, reservationData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +53,7 @@ export const deleteReservation = createAsyncThunk(
   'reservations/deleteReservation',
   async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/reservations/${id}`, {
+      await axios.delete(`${apiUrl}/api/reservations/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
