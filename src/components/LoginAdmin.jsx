@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setAdmin } from '../store/admin/adminSlice.js';
-
+const apiUrl = 'http://localhost:3000';
 
 const handleRequestError = (error, setError) => {
     if (error.response.status === 400) {
@@ -27,11 +27,10 @@ export default function LoginAdmin() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(values);
-            const response = await axios.post(`http://localhost:3000/admin/login`, values);
+            const response = await axios.post(`${apiUrl}/admin/login`, values);
             localStorage.setItem("access_token", response.data.token); 
             const id = response.data.id
-            const userResponse = await axios.get(`http://localhost:3000/admin/${id}`);
+            const userResponse = await axios.get(`${apiUrl}/admin/${id}`);
             const { username, email, role } = userResponse.data; 
             dispatch(setAdmin({ id, username, email, role }));
             navigate('/dashboard');

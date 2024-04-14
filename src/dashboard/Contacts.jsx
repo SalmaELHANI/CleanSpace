@@ -31,7 +31,7 @@ function Contacts() {
                     </div>
                 ) : (
                     contacts.slice().reverse().map((contact) => (
-                        <div key={contact._id} className="md:w-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid justify-items-stretch">
+                        <div key={contact._id} className="md:w-full max-w-sm p-7 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid justify-items-stretch">
                             <div>
                                 <h5 className="my-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{contact.email}</h5>
                             </div>

@@ -66,7 +66,7 @@ const Admin = () => {
                 <tr key={admin._id} className={admin.name === loggedInUsername ? "bg-blue-200" : ""}>
                 <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                   <div className="relative h-10 w-10">
-                    <img className="h-full w-full rounded-full object-cover object-center" src={`https://ui-avatars.com/api/?name=${admin.name}&background=random`} alt={admin.name} />
+                    <img className="h-full w-full rounded-full object-cover object-center" src={`https://ui-avatars.com/api/?name=${admin.username}&background=random`} alt={admin.username} />
                     <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                   </div>
                   <div className="text-sm">

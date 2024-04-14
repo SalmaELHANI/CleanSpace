@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link ,useLocation } from 'react-router-dom';
 import logo from '../images/logo.png';
 import { useDispatch } from 'react-redux';
 import { createContact } from '../store/contact/ContactThunks.js';
@@ -43,6 +43,8 @@ const otherLinks = [
     { text: "Avis", url: "#" }
 ];
 function Footer() {
+    const location = useLocation();
+    const hideFooter = location.pathname.includes('/dashboard');
     const [contact, setContact] = useState({
         email: "",
         question: ""
@@ -77,7 +79,7 @@ function Footer() {
     };
 
     return (
-        <footer className="bg-white " id="contact">
+        <footer className={`${hideFooter ? 'hidden' : 'flex'} bg-white`} id="contact">
             <div className="container px-6 py-12 mx-auto">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-y-10 lg:grid-cols-5">
                     <div className="sm:col-span-3 lg:col-span-2">
