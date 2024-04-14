@@ -78,7 +78,6 @@ export const updateReservation = async (req, res) => {
     try {
         const reservation = await db.reservation.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
-            runValidators: true
         });
         if (!reservation) {
             return res.status(404).json({

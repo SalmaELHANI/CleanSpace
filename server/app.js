@@ -3,12 +3,13 @@ const app = express();
 import db from "./models/index.js";
 import ReservationRoutes from "./routes/reservation.route.js";
 import ContactRoutes from "./routes/contact.route.js";
+import AdminRoutes from "./routes/admin.route.js";
 
 
 app.use(express.json());
 app.use(db.cors('*'));
-
 app.use('/api', ReservationRoutes, ContactRoutes);
+app.use('/admin', AdminRoutes); 
 
 const startserver = async () =>{
     try{ 
@@ -25,3 +26,5 @@ const startserver = async () =>{
     }
 } 
 startserver();
+
+export default app;
