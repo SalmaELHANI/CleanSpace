@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MoreVertical } from 'lucide-react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../store/admin/adminSlice';
 
 export default function Sidebar() {
     const [expanded, setExpanded] = useState(false);
     const classNamelogo = expanded ? "h-16 w-auto" : "transition-all w-16";
-    const navigate = useNavigate();
     const name = useSelector((state) => state.admin.username);
     const email = useSelector((state) => state.admin.email);
+    const role = useSelector((state) => state.admin.role);
+    const dispatch = useDispatch();
     
-
-    const handleLogout = () => {
+    const handleLogout = () => { 
         localStorage.removeItem("access_token");
-        dispatch(setUser({ isAuthenticated: false, id: '', username: '',email:'',role:'' }));
-        navigate('/home');
+        dispatch(logout());
     }; 
 
     const QuestionIcon = () => (
@@ -63,8 +63,8 @@ export default function Sidebar() {
                 <div className="mt-4">
                     <SidebarItem svg={<RendezVousIcon />} text="Gestion des rendez-vous" link="/dashboard/reservation" className="flex items-center w-full p-3 pt-3 mb-4 pl-3 rounded-lg text-start leading-tight transition-all hover:text-white hover:bg-blue-500 hover:rounded-2xl duration-300 focus:bg-blue-500 focus:bg-opacity-80 active:bg-blue-500 focus:text-white active:text-white outline-none" expanded={expanded} />
                     <SidebarItem svg={<QuestionIcon />} text="Questions user" link="/dashboard/contacts" className="flex items-center w-full p-3 pt-3 mb-4 pl-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-500 hover:text-white hover:rounded-2xl duration-300 focus:bg-blue-500 focus:bg-opacity-80 active:bg-blue-500 focus:text-white active:text-white outline-none" expanded={expanded} />
-                    <SidebarItem svg={<AdminIcon />} text="Gestion des admins" link="/dashboard/admin" className="flex items-center w-full p-3 pt-3 mb-4 pl-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-500 hover:text-white hover:rounded-2xl duration-300 focus:bg-blue-500 focus:bg-opacity-80 active:bg-blue-500 focus:text-white active:text-white outline-none" expanded={expanded} />
-                    <SidebarItem svg={<LogOutIcon />} text="Log Out" onClick={handleLogout} className="flex items-center w-full p-3 pt-3 mb-4 pl-3 rounded-lg text-start leading-tight transition-all text-red-600 hover:bg-red-600 hover:bg-opacity-80 focus:bg-red-600 focus:bg-opacity-80 active:bg-red-600 active:bg-opacity-80 hover:text-white focus:text-black active:text-black outline-none" expanded={expanded}/>
+                    {role === 'superadmin' && <SidebarItem svg={<AdminIcon />} text="Gestion des admins" link="/dashboard/admin" className="flex items-center w-full p-3 pt-3 mb-4 pl-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-500 hover:text-white hover:rounded-2xl duration-300 focus:bg-blue-500 focus:bg-opacity-80 active:bg-blue-500 focus:text-white active:text-white outline-none" expanded={expanded} />}
+                    <SidebarItem svg={<LogOutIcon />} text="Log Out" link="/" onClick={handleLogout} className="flex items-center w-full p-3 pt-3 mb-4 pl-3 rounded-lg text-start leading-tight transition-all text-red-600 hover:bg-red-600 hover:bg-opacity-80 focus:bg-red-600 focus:bg-opacity-80 active:bg-red-600 active:bg-opacity-80 hover:text-white focus:text-black active:text-black outline-none" expanded={expanded}/>
                 </div>
 
             </div>

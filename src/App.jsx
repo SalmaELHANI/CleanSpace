@@ -10,12 +10,11 @@ import HomePage from './components/HomePage';
 import Service from './components/Service';
 import About from './components/About';
 import Footer from './components/Footer';
-import Navbar from './components/Navbar';
 import Reserve from './components/Reservation';
 import Hero from './components/Hero';
 import LoginAdmin from './components/LoginAdmin.jsx';
-import Dashboard from './dashboard/Dashboard.jsx';
 import DashboardRoutes from './dashboard/DashboardRoutes.jsx';
+import Navbar from './components/Navbar.jsx';
 
 function App() {
   useEffect(() => {
@@ -29,7 +28,7 @@ function App() {
   return (
     <Providers store={store}>
       <BrowserRouter>
-        
+      <Navbar/>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/home' element={<Hero />} />
