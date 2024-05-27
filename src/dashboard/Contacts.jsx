@@ -13,6 +13,7 @@ function Contacts() {
     }, [dispatch]);
 
     const handleDelete = (id) => {
+        console.log(id);
         dispatch(deleteContact(id))
         .then(() => {
             dispatch(fetchContacts());

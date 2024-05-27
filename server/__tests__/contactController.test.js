@@ -1,16 +1,10 @@
 import request from 'supertest';
 import app from '../app.js';
 import {createToken} from '../middleware/adminMiddleware.js'
+
 describe('Routes de contact', () => {
   let contactId;
   let token;
-
-  beforeAll(() => {
-    const admin = {
-      _id: '66057ced552d20430ca79b50', 
-    };
-    token = createToken(admin);
-  });
 
   it('should create a new contact', async () => {
     const newContact = {
@@ -20,7 +14,6 @@ describe('Routes de contact', () => {
 
     const response = await request(app)
       .post('/api/contacts')
-      .set('Authorization', `Bearer ${token}`)
       .send(newContact);
 
     expect(response.status).toBe(201);

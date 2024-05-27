@@ -26,7 +26,9 @@ export const createReservation = async (req, res) => {
         const reservation = await db.reservation.create(req.body);
         const pdfDoc = generatePDFContent(reservation);
         const pdfPath = 'reservation.pdf';
+        // configure le flux de sortie du document PDF (pdfDoc) vers un fichier
         pdfDoc.pipe(fs.createWriteStream(pdfPath));
+        //termine le flux du document PDF
         pdfDoc.end();
 
         const message = `Cher(e) ${reservation.name},<br><br>
@@ -35,8 +37,8 @@ export const createReservation = async (req, res) => {
         L'équipe CleanSpace`;
 
         await sendEmail(reservation.email, 'Confirmation de réservation', message, pdfPath);
-
-        res.status(201).json({
+        await sendEmail('cleanspace137@gmail.com', 'Nouvelle réservation', 'Nouvelle réservation : veuillez trouver ci-joint le PDF contenant les détails.', pdfPath);
+            res.status(201).json({
             status: 'success',
             data: {
                 reservation

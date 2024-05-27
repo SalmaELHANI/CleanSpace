@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setAdmin } from '../store/admin/adminSlice.js';
-const apiUrl = 'https://cleanspace.onrender.com';
+const apiUrl = 'http://localhost:3000';
 
 const handleRequestError = (error, setError) => {
     if (error.response.status === 400) {

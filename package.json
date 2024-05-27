@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "esliAnt . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "dev:front": "vite --host 0.0.0.0",
     "dev:back": "nodemon ./server/app.js",

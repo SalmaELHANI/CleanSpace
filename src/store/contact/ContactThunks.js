@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const apiUrl = 'https://cleanspace.onrender.com';
+const apiUrl = 'http://localhost:3000';
 const token= localStorage.getItem('access_token');
 console.log("Test" ,apiUrl);
 
@@ -52,7 +52,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id) => {
     try {
-      await axios.delete(`${apiUrl}/contacts/${id}`, {
+      await axios.delete(`${apiUrl}/api/contacts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

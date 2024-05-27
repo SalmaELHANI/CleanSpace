@@ -5,7 +5,7 @@ const token= localStorage.getItem('access_token');
 
 const AddAdmin = () => {
   const [newAdmin, setNewAdmin] = useState({ username: '', email: '', password:'', role: ''});
-  const apiUrl = 'https://cleanspace.onrender.com';
+  const apiUrl = 'http://localhost:3000';
   const navigate = useNavigate();
 
 

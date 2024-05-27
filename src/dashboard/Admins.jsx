@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Admin = () => {
   const [admins, setAdmins] = useState([]);
-  const apiUrl = 'https://cleanspace.onrender.com';
+  const apiUrl = 'http://localhost:3000';
   const token= localStorage.getItem('access_token');
   const loggedInUsername = useSelector((state) => state.admin.id);
   console.log(loggedInUsername);

@@ -1,6 +1,6 @@
-FROM node:latest
+FROM node:14
 
-WORKDIR /app
+WORKDIR /clean-space
 
 COPY package*.json ./
 
@@ -13,5 +13,6 @@ EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
 
-# docker build -t clean-space .
-#docker run -p 5173:5173 -p 3000:3000 clean-space
+
+# construire l'image Docker: docker build -t clean-space .
+# exécuter le conteneur: docker run -p 5173:5173 -p 3000:3000 clean-space
