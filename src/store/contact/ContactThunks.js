@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://cleanspace.onrender.com'
 const token= localStorage.getItem('access_token');
 console.log("Test" ,apiUrl);
 
